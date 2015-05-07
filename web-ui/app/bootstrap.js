@@ -5,8 +5,8 @@
 
 require.config({
     paths: {
-        angular: '../node_modules/angular/angular',
-        angularRoute: '../node_modules/angular-route/angular-route'
+        angular: '../lib/angular/angular',
+        angularRoute: '../lib/angular-route/angular-route'
     },
     shim: {
         'angular': {

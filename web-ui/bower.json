@@ -1,0 +1,21 @@
+{
+  "name": "cowgame",
+  "version": "0.0.0",
+  "homepage": "https://github.com/nicktombeur/cowGame",
+  "authors": [
+    "Martinus1990 <maarten.denorme@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "~1.3.15",
+    "angular": "~1.3.15",
+    "requirejs": "~2.1.17"
+  }
+}
