@@ -1,7 +1,7 @@
-package be.cgi.app
+package be.cgi.app.common.swagger
 
 import org.scalatra.ScalatraServlet
-import org.scalatra.swagger.{NativeSwaggerBase, ApiInfo, Swagger}
+import org.scalatra.swagger.{ApiInfo, NativeSwaggerBase, Swagger}
 
 /**
  * Created by nick on 3/27/15.
