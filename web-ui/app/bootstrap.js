@@ -6,13 +6,20 @@
 require.config({
     paths: {
         angular: '../lib/angular/angular',
-        angularRoute: '../lib/angular-route/angular-route'
+        angularRoute: '../lib/angular-route/angular-route',
+        jquery: '../lib/jquery/dist/jquery.min',
+        materialize: '../lib/materialize/dist/js/materialize.min',
+        hammerjs: '../lib/materialize/js/hammer.min'
     },
     shim: {
         'angular': {
             'exports': 'angular'
         },
-        'angularRoute': ['angular']
+        'angularRoute': ['angular'],
+        'materialize': ['jquery', 'hammerjs'],
+        'app.module': ['angular', 'angularRoute'],
+        'app.route': ['app.module'],
+        'app.ctrl': ['app.module']
     },
     priority: [
         'angular'
@@ -20,12 +27,14 @@ require.config({
 });
 
 require([
-        'angular',
+        'angular', 'jquery', 'materialize', 'hammerjs',
         'app.route', 'app.module', 'app.ctrl',
         'index/indexCtrl'],
-    function (angular) {
+    function (angular, $) {
         angular.element(document).ready(function () {
             angular.bootstrap(document, ['cowGame']);
+
+            $('.button-collapse').sideNav();
         });
     }
 );

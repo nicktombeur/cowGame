@@ -3,8 +3,10 @@
  */
 'use strict';
 
-define(['../app.ctrl'], function(controllers) {
+define(['../app.ctrl', 'jquery'], function(controllers, $) {
     controllers.controller('IndexController', function() {
-        this.test = "Hello there";
+        $('.parallax').parallax();
+
+        this.test = "Some motivational text here ...";
     });
 });

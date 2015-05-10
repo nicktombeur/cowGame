@@ -5,11 +5,74 @@
     <meta charset="UTF-8">
     <title>Cow Game</title>
     <link rel="stylesheet" href="assets/css/default.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <script src="lib/requirejs/require.js" data-main="app/bootstrap.js"></script>
 </head>
 <body>
-    <div ng-view>
 
-    </div>
+    <!-- Header -->
+    <nav role="navigation">
+        <div class="nav-wrapper container">
+            <a href="#" class="brand-logo">CGI</a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="#"><i class="mdi-hardware-gamepad"></i></a></li>
+                <li><a href="#"><i class="mdi-action-https"></i></a></li>
+            </ul>
+
+            <ul id="nav-mobile" class="side-nav">
+                <li><a href="#">Play</a></li>
+                <li><a href="#">Login</a></li>
+            </ul>
+            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+        </div>
+    </nav>
+
+    <!-- Main view -->
+    <div ng-view></div>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col l4 s12">
+                    <h5 class="white-text">CGI Belgium</h5>
+                    <ul>
+                        <li class="white-text">Vuurberg</li>
+                        <li class="white-text">Airport Plaza Building C Kyoto</li>
+                        <li class="white-text">Leonardo Da Vincilaan, 19</li>
+                        <li class="white-text">B-1831 Diegem</li>
+                        <li><a class="white-text" href="http://www.cgi.com/belgium">www.cgi.com/belgium</a></li>
+                    </ul>
+
+                </div>
+                <div class="col l5 s12">
+                    <h5 class="white-text">Contact</h5>
+                    <ul>
+                        <li class="white-text">Bernard Ghaye</a></li>
+                        <li class="white-text">E-mail: b.ghaye@cgi.com</li>
+                        <li class="white-text">Phone: +32 2 708 63 32</li>
+                        <li class="white-text">Mobile: +32 473 31 30 31</li>
+                        <li>&nbsp;</li>
+                        <li class="white-text">Charlotte Willems</li>
+                        <li class="white-text">E-mail: charlotte.willems@cgi.com</li>
+                        <li class="white-text">Mobile: +32 476 57 83 89</li>
+                    </ul>
+                </div>
+                <div class="col l3 s12">
+                    <h5 class="white-text">Connect</h5>
+                    <ul>
+                        <li><a class="white-text" href="https://www.facebook.com/CGIBelgium">facebook</a></li>
+                        <li><a class="white-text" href="https://www.linkedin.com/pub/cgi-belgium/24/960/646/nl">linkedin</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                Made by <a class="brown-text text-lighten-3" href="http://cgi.com">CGI</a>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>

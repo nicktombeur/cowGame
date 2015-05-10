@@ -12,6 +12,9 @@ define([
                     templateUrl: 'app/index/index.html',
                     controller: 'IndexController',
                     controllerAs: 'indexCtrl'
+                })
+                .otherwise({
+                    redirectTo: '/'
                 });
     }]);
 });
