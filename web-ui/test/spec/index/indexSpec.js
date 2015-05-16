@@ -20,7 +20,7 @@ define(['angular','angularRoute','app.ctrl' , 'app.module', 'index/indexCtrl','a
 
            var ctrl = $controller('IndexController', { $scope: $rootScope.$new() });
            
-           expect(ctrl.test).toBe('Hello there');
+           expect(ctrl.test).toBe('Some motivational text here ...');
            
        }))
     })

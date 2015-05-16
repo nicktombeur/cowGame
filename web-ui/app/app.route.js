@@ -1,9 +1,7 @@
 'use strict';
 
-define([
-    'app.module'
-], function(angular) {
-    return angular.config(['$routeProvider', '$locationProvider',
+define(['app.module','app.ctrl','index/indexCtrl'], function(app) {
+    return app.config(['$routeProvider', '$locationProvider',
         function($routeProvider, $locationProvider) {
             $locationProvider.html5Mode(true);
 

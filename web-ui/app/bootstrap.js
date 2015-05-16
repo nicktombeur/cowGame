@@ -4,6 +4,7 @@
 'use strict';
 
 require.config({
+    baseurl:'app',
     paths: {
         angular: '../lib/angular/angular',
         angularRoute: '../lib/angular-route/angular-route',
@@ -12,24 +13,27 @@ require.config({
         hammerjs: '../lib/materialize/js/hammer.min'
     },
     shim: {
+        'jquery': {
+            'exports': '$'
+        },
+        'hammerjs':{
+            'exports': 'hammerjs'
+        },
         'angular': {
             'exports': 'angular'
         },
-        'angularRoute': ['angular'],
-        'materialize': ['jquery', 'hammerjs'],
-        'app.module': ['angular', 'angularRoute'],
-        'app.route': ['app.module'],
-        'app.ctrl': ['app.module']
-    },
-    priority: [
-        'angular'
-    ]
+        'angularRoute': {
+            deps:['angular']
+        },
+        'materialize': {
+            deps:['jquery', 'hammerjs']
+        }
+    }
 });
 
 require([
-        'angular', 'jquery', 'materialize', 'hammerjs',
-        'app.route', 'app.module', 'app.ctrl',
-        'index/indexCtrl'],
+        'angular', 'jquery', 'materialize',
+        'app.route'],
     function (angular, $) {
         angular.element(document).ready(function () {
             angular.bootstrap(document, ['cowGame']);
