@@ -24,7 +24,8 @@ module.exports = function(config) {
 
     // list of files to exclude
     exclude: [
-        'app/bootstrap.js'
+        'app/bootstrap.js',
+        'lib/materialize/bin/materialize.js'
     ],
 
 

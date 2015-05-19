@@ -55,13 +55,13 @@ require.config({
 });
 
 require([
-        'angular', 'jquery','materialize',
+        'angular', 'jquery','materialize','routeResolver',
         'app.route'],
     function (angular, $) {
         angular.element(document).ready(function () {
             angular.bootstrap(document, ['cowGame']);
 
-            $('.button-collapse').sideNav();
+           /* $('.button-collapse').sideNav();*/
         });
     }
 );

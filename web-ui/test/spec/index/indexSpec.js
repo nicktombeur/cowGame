@@ -1,6 +1,6 @@
-define(['angular','angularRoute','app.ctrl' , 'app.module', 'index/indexCtrl','angularMocks'], function() {
+define(['angular','angularRoute','routeResolver', 'app.route', 'index/indexCtrl','angularMocks'], function() {
     describe('Cowgame index test suite',function(){
-        beforeEach(module('cowGame.ctrls'));
+        beforeEach(module('cowGame'));
         
         var $rootScope,$controller;
 

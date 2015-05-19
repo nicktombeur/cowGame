@@ -3,12 +3,13 @@
  */
 'use strict';
 
-define(['app.ctrl', 'jquery'], function (controllers, $) {
-    controllers.controller('IndexController', function () {
+define(['app.module', 'jquery'], function (app, $) {
+    app.controller('IndexController', [function () {
         this.init = function () {
+            $('.button-collapse').sideNav();
             $('.parallax').parallax();
         };
 
         this.test = "Some motivational text here ...";
-    });
+    }]);
 });

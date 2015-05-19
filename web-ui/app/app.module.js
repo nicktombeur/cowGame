@@ -7,5 +7,5 @@ define([
     'angular',
     'angularRoute'
 ], function(angular) {
-    return angular.module('cowGame', ['ngRoute', 'cowGame.ctrls','cowGame.services']);
+    return angular.module('cowGame', ['ngRoute','routeResolver']);
 });

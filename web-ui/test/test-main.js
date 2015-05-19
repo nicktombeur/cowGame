@@ -16,16 +16,11 @@ require.config({
         'angular': '../lib/angular/angular.min',
         'angularMocks': '../lib/angular-mocks/angular-mocks',
         'angularRoute': '../lib/angular-route/angular-route.min',
-        jquery: '../lib/jquery/dist/jquery.min',
-        materialize: '../lib/materialize/dist/js/materialize.min',
-        hammerjs: '../lib/materialize/js/hammer.min'
+        jquery: '../lib/jquery/dist/jquery.min'
     },
     shim: {
         'jquery': {
             'exports': '$'
-        },
-        'hammerjs': {
-            'exports': 'hammerjs'
         },
         'angular': {
             'exports': 'angular'
@@ -33,12 +28,24 @@ require.config({
         'angularRoute': {
             deps: ['angular']
         },
-        'materialize': {
-            deps: ['jquery', 'hammerjs']
-        },
         'angularMocks': {
             deps: ['angular']
 
+        },
+        'threejs_OBJLoader': {
+            deps: ['threejs_base']
+        },
+        'threejs_MTLLoader': {
+            deps: ['threejs_base']
+        },
+        'threejs_OBJMTLLoader': {
+            deps: ['threejs_base']
+        },
+        'threejsCow': {
+            deps: ['threejs_keyboard']
+        },
+        'cowGame': {
+            deps: ['threejs_base', 'threejs_detector', 'threejs_stats', 'threejs_keyboard', 'threejs_fullscreen', 'threejs_windowResize', 'threejs_OBJLoader', 'threejs_MTLLoader', 'threejs_OBJMTLLoader']
         }
     },
 
