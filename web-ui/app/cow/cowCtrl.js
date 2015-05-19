@@ -12,7 +12,7 @@ define(['angular','../app.ctrl','jquery','cowGame','threejsCow'], function(angul
             animate();
         });
 
-        $scope.$on('$locationChangeStart',function(event){
+        $scope.$on('$destroy',function(){
             stop();
         });
 
@@ -167,6 +167,7 @@ define(['angular','../app.ctrl','jquery','cowGame','threejsCow'], function(angul
         {
             brushAction();
             cowService.getField();
+            event.preventDefault();
         }
 
         function brushAction()
