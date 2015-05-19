@@ -9,15 +9,23 @@ require.config({
         angular: '../lib/angular/angular',
         angularRoute: '../lib/angular-route/angular-route',
         jquery: '../lib/jquery/dist/jquery.min',
-        materialize: '../lib/materialize/dist/js/materialize.min',
-        hammerjs: '../lib/materialize/js/hammer.min'
+        materialize: '../lib/materialize/bin/materialize',
+        hammerjs: '../lib/materialize/js/hammer.min',
+        'cowGame': '../assets/threejs/cowGame',
+        threejs_base: '../assets/threejs/Three',
+        threejs_detector: '../assets/threejs/Detector',
+        threejs_stats: '../assets/threejs/Stats',
+        threejs_keyboard: '../assets/threejs/KeyboardState',
+        threejs_fullscreen: '../assets/threejs/THREEx.FullScreen',
+        threejs_windowResize: '../assets/threejs/THREEx.WindowResize',
+        threejs_OBJLoader: '../assets/threejs/OBJLoader',
+        threejs_MTLLoader: '../assets/threejs/MTLLoader',
+        threejs_OBJMTLLoader: '../assets/threejs/OBJMTLLoader',
+        threejsCow: 'cow/threejsCow'
     },
     shim: {
         'jquery': {
             'exports': '$'
-        },
-        'hammerjs':{
-            'exports': 'hammerjs'
         },
         'angular': {
             'exports': 'angular'
@@ -27,12 +35,27 @@ require.config({
         },
         'materialize': {
             deps:['jquery', 'hammerjs']
+        },
+        'threejs_OBJLoader': {
+            deps: ['threejs_base']
+        },
+        'threejs_MTLLoader': {
+            deps: ['threejs_base']
+        },
+        'threejs_OBJMTLLoader': {
+            deps: ['threejs_base']
+        },
+        'threejsCow': {
+            deps: ['threejs_keyboard']
+        },
+        'cowGame': {
+            deps: ['threejs_base', 'threejs_detector', 'threejs_stats', 'threejs_keyboard', 'threejs_fullscreen', 'threejs_windowResize', 'threejs_OBJLoader', 'threejs_MTLLoader', 'threejs_OBJMTLLoader']
         }
     }
 });
 
 require([
-        'angular', 'jquery', 'materialize',
+        'angular', 'jquery','materialize',
         'app.route'],
     function (angular, $) {
         angular.element(document).ready(function () {
