@@ -88,7 +88,7 @@ define(['angular','app.ctrl','jquery','cowGame','threejsCow'], function(angular,
             setLight();
 
             // SKYBOX
-            var cgiLogo = new THREE.ImageUtils.loadTexture("assets/images/cgi-logo.png");
+            var cgiLogo = new THREE.ImageUtils.loadTexture("assets/img/cgi-logo.png");
             var skyBoxGeometry = new THREE.CubeGeometry( 1000, 1000, 1000 );
             var skyBoxMaterial = new THREE.MeshBasicMaterial( { map:cgiLogo ,color: 0xffffee, side: THREE.BackSide } );
             var skyBox = new THREE.Mesh( skyBoxGeometry, skyBoxMaterial );
@@ -105,7 +105,7 @@ define(['angular','app.ctrl','jquery','cowGame','threejsCow'], function(angular,
              scene.add(axis);*/
 
 
-            var squareT = new THREE.ImageUtils.loadTexture("assets/images/square-thick.png");
+            var squareT = new THREE.ImageUtils.loadTexture("assets/img/square-thick.png");
             squareT.wrapS = squareT.wrapT = THREE.RepeatWrapping;
             squareT.repeat.set(GRID_SIZE,GRID_SIZE);
             this.planeGeo = new THREE.PlaneGeometry(GRID_SIZE,GRID_SIZE);
@@ -118,8 +118,8 @@ define(['angular','app.ctrl','jquery','cowGame','threejsCow'], function(angular,
 
             this.cubeGeo = new THREE.CubeGeometry(CUBE_SIZE,CUBE_SIZE,CUBE_SIZE);
 
-            var squareTexture     = new THREE.ImageUtils.loadTexture("assets/images/square-thick.png");
-            var squareTexturePlus = new THREE.ImageUtils.loadTexture("assets/images/square-plus.png");
+            var squareTexture     = new THREE.ImageUtils.loadTexture("assets/img/square-thick.png");
+            var squareTexturePlus = new THREE.ImageUtils.loadTexture("assets/img/square-plus.png");
 
             this.offset = [
                 new THREE.Vector3(1,0,0), new THREE.Vector3(-1,0,0),
