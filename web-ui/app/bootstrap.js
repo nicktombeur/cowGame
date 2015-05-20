@@ -55,7 +55,7 @@ require.config({
 });
 
 require([
-        'angular', 'jquery','materialize','routeResolver',
+        'angular', 'jquery','materialize','routeResolver','app.ctrl','app.service',
         'app.route'],
     function (angular, $) {
         angular.element(document).ready(function () {

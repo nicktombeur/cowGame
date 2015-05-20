@@ -1,5 +1,5 @@
-define(['angular','app.module','jquery','cowGame','threejsCow'], function(angular,app,$) {
-    app.controller('CowController', ['$scope','cowService',function($scope,cowService) {
+define(['angular','app.ctrl','jquery','cowGame','threejsCow'], function(angular,ctrls,$) {
+    ctrls.controller('CowController', ['$scope','cowService',function($scope,cowService) {
         this.test = "Hello there";
 
         angular.element(document).ready(function () {

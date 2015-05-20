@@ -1,5 +1,5 @@
-define(['app.module'], function(app) {
-    app.factory('cowService', function() {
+define(['app.service'], function(services) {
+    services.factory('cowService', function() {
 
         var field = [];
 

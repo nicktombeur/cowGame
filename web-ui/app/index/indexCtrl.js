@@ -3,8 +3,8 @@
  */
 'use strict';
 
-define(['app.module', 'jquery'], function (app, $) {
-    app.controller('IndexController', [function () {
+define(['app.ctrl', 'jquery'], function (ctrls, $) {
+    ctrls.controller('IndexController', [function () {
         this.init = function () {
             $('.button-collapse').sideNav();
             $('.parallax').parallax();

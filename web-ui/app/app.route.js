@@ -1,20 +1,8 @@
 'use strict';
 
 define(['app.module'], function(app) {
-    return app.config(['$routeProvider', '$locationProvider','routeResolverProvider', '$controllerProvider',
-        '$compileProvider', '$filterProvider', '$provide',
-        function ($routeProvider, $locationProvider, routeResolverProvider, $controllerProvider,
-                  $compileProvider, $filterProvider, $provide) {
-
-            /**
-             * override angular default module api for creating components
-             * @type {Function|register|register|register}
-             */
-            app.controller = $controllerProvider.register;
-            app.service = $provide.service;
-            app.factory = $provide.factory;
-            app.filter = $filterProvider.register;
-            app.directive = $compileProvider.directive;
+    return app.config(['$routeProvider', '$locationProvider','routeResolverProvider',
+        function ($routeProvider, $locationProvider, routeResolverProvider) {
 
             routeResolverProvider.routeConfig.setViewsDirectory("/app");
 
