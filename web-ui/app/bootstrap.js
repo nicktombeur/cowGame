@@ -21,7 +21,6 @@ require.config({
         threejs_OBJLoader: '../assets/threejs/OBJLoader',
         threejs_MTLLoader: '../assets/threejs/MTLLoader',
         threejs_OBJMTLLoader: '../assets/threejs/OBJMTLLoader',
-        threejsCow: 'cow/threejsCow'
     },
     shim: {
         'jquery': {
@@ -34,6 +33,7 @@ require.config({
             deps:['angular']
         },
         'materialize': {
+            'export': 'materialize',
             deps:['jquery', 'hammerjs']
         },
         'threejs_OBJLoader': {
@@ -44,9 +44,6 @@ require.config({
         },
         'threejs_OBJMTLLoader': {
             deps: ['threejs_base']
-        },
-        'threejsCow': {
-            deps: ['threejs_keyboard']
         },
         'cowGame': {
             deps: ['threejs_base', 'threejs_detector', 'threejs_stats', 'threejs_keyboard', 'threejs_fullscreen', 'threejs_windowResize', 'threejs_OBJLoader', 'threejs_MTLLoader', 'threejs_OBJMTLLoader']
@@ -61,7 +58,7 @@ require([
         angular.element(document).ready(function () {
             angular.bootstrap(document, ['cowGame']);
 
-           /* $('.button-collapse').sideNav();*/
+            $('.button-collapse').sideNav();
         });
     }
 );
