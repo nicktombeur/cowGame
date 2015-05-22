@@ -1,1 +1,1 @@
-console.log("Cow is rady to use");
+console.log("Cow is ready to use");

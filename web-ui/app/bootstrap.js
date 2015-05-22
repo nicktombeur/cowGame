@@ -20,7 +20,7 @@ require.config({
         threejs_windowResize: '../assets/threejs/THREEx.WindowResize',
         threejs_OBJLoader: '../assets/threejs/OBJLoader',
         threejs_MTLLoader: '../assets/threejs/MTLLoader',
-        threejs_OBJMTLLoader: '../assets/threejs/OBJMTLLoader',
+        threejs_OBJMTLLoader: '../assets/threejs/OBJMTLLoader'
     },
     shim: {
         'jquery': {
@@ -46,7 +46,7 @@ require.config({
             deps: ['threejs_base']
         },
         'cowGame': {
-            deps: ['threejs_base', 'threejs_detector', 'threejs_stats', 'threejs_keyboard', 'threejs_fullscreen', 'threejs_windowResize', 'threejs_OBJLoader', 'threejs_MTLLoader', 'threejs_OBJMTLLoader']
+            deps: ['threejs_base', 'threejs_detector', 'threejs_stats', 'threejs_keyboard', 'threejs_fullscreen', 'threejs_windowResize', 'threejs_OBJLoader', 'threejs_MTLLoader', 'threejs_OBJMTLLoader','cow/CowGame']
         }
     }
 });
