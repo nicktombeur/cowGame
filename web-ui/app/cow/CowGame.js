@@ -1,4 +1,4 @@
-CowGame = function (cowService) {
+CowGame = function (cowService,gridSize) {
 // MAIN
 
 // standard global variables
@@ -11,12 +11,12 @@ CowGame = function (cowService) {
     this.stats;
     this.mouse2D;
     this.cow;
-    this.cubeNames;
+    this.cubeNames = [];
     this.requestId = undefined;
     this.keyboard = new KeyboardState();
-    this.clock;
-    this.GRID_SIZE;
-    this.CUBE_SIZE;
+    this.clock = new THREE.Clock();
+    this.GRID_SIZE = gridSize;
+    this.CUBE_SIZE = 2;
 
 // custom global variables
     this.mesh;
