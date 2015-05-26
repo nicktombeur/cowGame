@@ -1,4 +1,4 @@
-define(['angular','jquery','angularRoute','routeResolver', 'app.route','app.ctrl','app.service','cow/cowService', 'cow/cowCtrl','angularMocks'], function() {
+define(['angular','jquery','angularRoute','routeResolver', 'app.route','app.ctrl','app.service','app.directive','cow/cowServices', 'cow/cowCtrl','angularMocks'], function() {
     describe('Cowgame board test suite',function(){
         beforeEach(module('cowGame'));
 

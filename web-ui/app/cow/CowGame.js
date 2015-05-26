@@ -18,8 +18,10 @@ CowGame = function (cowService,gridSize) {
     this.GRID_SIZE = gridSize;
     this.CUBE_SIZE = 2;
 
+    this.tempCube;
+
 // custom global variables
-    this.mesh;
+    this.openDialog = false;
     this.person;
 }
 
@@ -66,8 +68,8 @@ CowGame.prototype.init = function () {
         this.renderer = new THREE.CanvasRenderer();
 
     this.renderer.setSize(this.SCREEN_WIDTH, this.SCREEN_HEIGHT);
-    container = document.getElementById('ThreeJS');
-    container.appendChild(this.renderer.domElement);
+    this.container = document.getElementById('ThreeJS');
+    this.container.appendChild(this.renderer.domElement);
     // EVENTS
     THREEx.WindowResize(this.renderer, this.camera);
 
@@ -76,7 +78,7 @@ CowGame.prototype.init = function () {
     this.stats.domElement.style.position = 'absolute';
     this.stats.domElement.style.bottom = '0px';
     this.stats.domElement.style.zIndex = 100;
-    container.appendChild(this.stats.domElement);
+    this.container.appendChild(this.stats.domElement);
     // LIGHT
 
     this.setLight();
@@ -89,15 +91,6 @@ CowGame.prototype.init = function () {
     this.scene.add(skyBox);
 
     this.loadCow();
-
-    ////////////
-    // CUSTOM //
-    ////////////
-
-    /*	var axis = new THREE.AxisHelper(33);
-     axis.position.y = 0.01;
-     scene.add(axis);*/
-
 
     var squareT = new THREE.ImageUtils.loadTexture("assets/img/square-thick.png");
     squareT.wrapS = squareT.wrapT = THREE.RepeatWrapping;
@@ -115,11 +108,6 @@ CowGame.prototype.init = function () {
     var squareTexture = new THREE.ImageUtils.loadTexture("assets/img/square-thick.png");
     var squareTexturePlus = new THREE.ImageUtils.loadTexture("assets/img/square-plus.png");
 
-    this.offset = [
-        new THREE.Vector3(1, 0, 0), new THREE.Vector3(-1, 0, 0),
-        new THREE.Vector3(0, 1, 0), new THREE.Vector3(0, -1, 0),
-        new THREE.Vector3(0, 0, 1), new THREE.Vector3(0, 0, -1)];
-
     this.colors = [new THREE.Color(0x66FFFF), new THREE.Color(0xffffff)];
 
     this.materials = {"solid": [], "select": []};
@@ -128,12 +116,12 @@ CowGame.prototype.init = function () {
         this.materials["select"][i] = new THREE.MeshBasicMaterial({map: squareTexturePlus, color: this.colors[i]});
     }
 
-    this.brush = new THREE.Mesh(this.cubeGeo.clone(), this.materials["solid"][1]);
-    this.brush.ignore = true;    // ignored by raycaster
-    this.brush.visible = false;
-    this.brush.colorIndex = 1;
+    this.tempCube = new THREE.Mesh(this.cubeGeo.clone(), this.materials["solid"][1]);
+    this.tempCube.ignore = true;    // ignored by raycaster
+    this.tempCube.visible = false;
+    this.tempCube.colorIndex = 1;
 
-    this.scene.add(this.brush);
+    this.scene.add(this.tempCube);
 
     this.cubeNames = [];
 
@@ -150,7 +138,7 @@ CowGame.prototype.init = function () {
 CowGame.prototype.brushAction = function() {
 
 
-    var cube = this.scene.getObjectByName(this.brush.targetName);
+    var cube = this.scene.getObjectByName(this.tempCube.targetName);
     if (cube && !cube.selected) {
        return {name: cube.name, x: cube.coord.x, y: cube.coord.y};
 
@@ -160,7 +148,7 @@ CowGame.prototype.brushAction = function() {
 
 CowGame.prototype.selectCube = function(cubeName){
     var cube = this.scene.getObjectByName(cubeName);
-    cube.material = this.materials["solid"][0];
+    cube.material = this.materials["select"][0];
     cube.colorIndex = 0;
     cube.selected = true;
 };
@@ -181,7 +169,7 @@ CowGame.prototype.setLight = function() {
     directionalLight.visible = true;
     directionalLight.name = 'dirLight';
     this.scene.add(directionalLight);
-}
+};
 
 CowGame.prototype.loadCow = function() {
     var loader = new THREE.OBJMTLLoader();
@@ -201,7 +189,7 @@ CowGame.prototype.loadCow = function() {
         that.cow = cowObject.clone();
         that.scene.add(that.cow);
     });
-}
+};
 
 CowGame.prototype.generateGrid = function() {
 
@@ -229,7 +217,7 @@ CowGame.prototype.generateGrid = function() {
         }
     }
 
-}
+};
 
 CowGame.prototype.update = function() {
 
@@ -239,7 +227,7 @@ CowGame.prototype.update = function() {
 
 
     this.keyboard.update();
-    if (!$('#modal3').is(":visible")) {
+    if (!this.openDialog) {
         // move forwards/backwards
         if (this.keyboard.pressed("Z"))
             this.person.translateZ(-moveDistance);
@@ -282,11 +270,7 @@ CowGame.prototype.update = function() {
             this.viewSet(2);
 
 
-        // voxel painting controls
-
-        // when digit is pressed, change brush color data
-
-        this.brush.material = this.materials["select"][this.brush.colorIndex];
+        this.tempCube.material = this.materials["select"][this.tempCube.colorIndex];
 
 
         ///////////////////////////////////////////////////////////////////////////
@@ -300,22 +284,25 @@ CowGame.prototype.update = function() {
                 result = intersectionList[i];
         }
 
-        this.brush.visible = false;
+        this.tempCube.visible = false;
 
-        var targetCube = this.scene.getObjectByName(this.brush.targetName);
-        if (targetCube)
-            targetCube.material = this.materials["solid"][targetCube.colorIndex];
-        this.brush.targetName = null;
+        var hoverCube = this.scene.getObjectByName(this.tempCube.targetName);
+        if (hoverCube) hoverCube.material = this.materials["solid"][hoverCube.colorIndex];
+        this.tempCube.targetName = null;
 
         if (result) {
             if (!result.object.base) {
-                this.brush.visible = false;
+                this.tempCube.visible = false;
                 var intPosition = new THREE.Vector3(Math.floor(result.object.position.x),
                     Math.floor(result.object.position.y), Math.floor(result.object.position.z));
-                this.brush.targetName = "X" + intPosition.x + "Y" + intPosition.y + "Z" + intPosition.z;
-                var targetCube = this.scene.getObjectByName(this.brush.targetName);
+                this.tempCube.targetName = "X" + intPosition.x + "Y" + intPosition.y + "Z" + intPosition.z;
+                var targetCube = this.scene.getObjectByName(this.tempCube.targetName);
 
-                if (!targetCube.selected) targetCube.material = this.materials["select"][targetCube.colorIndex];
+                if (!targetCube.selected){
+                    targetCube.material = this.materials["select"][targetCube.colorIndex];
+                }else{
+                    this.tempCube.targetName = null;
+                }
 
                 if (this.cow) this.cow.position = this.randomMovement(this.cow);
 

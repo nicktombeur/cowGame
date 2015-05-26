@@ -1,7 +1,8 @@
 var gulp = require('gulp'),
     connect = require('gulp-connect'),
-    sass = require('gulp-sass');
-    karma = require('karma').server;
+    sass = require('gulp-sass'),
+    karma = require('karma').server,
+    runSequence = require('run-sequence');
 
 gulp.task('sass', function() {
     gulp.src('./assets/css/**/*.sass')
@@ -13,6 +14,7 @@ gulp.task('sass', function() {
 
 gulp.task('watch', function() {
     gulp.watch('./assets/css/**/*.sass', ['sass']);
+    gulp.watch('./app/**/*.js', ['test']);
 });
 
 gulp.task('webserver', function() {
@@ -27,4 +29,4 @@ gulp.task('test',function (done) {
     }, done);
 });
 
-gulp.task('default', ['webserver', 'sass', 'watch']);
+gulp.task('default', ['test','webserver', 'sass', 'watch']);

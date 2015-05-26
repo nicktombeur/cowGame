@@ -1,7 +1,6 @@
 define(['angular', 'app.ctrl', 'jquery', 'cowGame'], function (angular, ctrls, $) {
 
-    ctrls.controller('CowController', ['$scope', 'cowService', function ($scope, cowService) {
-        var heightNav;
+    ctrls.controller('CowController', ['$scope', 'cowService','cowDialogService','cowNavService', function ($scope, cowService,cowDialogService,cowNavService) {
         var vm = this;
         vm.test = "Hello there";
         vm.selectedCube = {};
@@ -13,7 +12,8 @@ define(['angular', 'app.ctrl', 'jquery', 'cowGame'], function (angular, ctrls, $
                 cowService.addUser(vm.selectedCube);
                 vm.cowGame.selectCube(vm.selectedCube.name);
                 vm.reset(vm.userForm);
-                $('#modal3').closeModal();
+                vm.cowGame.openDialog = false;
+                cowDialogService.close('modal',vm.dialogClosed)
             }
         };
 
@@ -21,10 +21,11 @@ define(['angular', 'app.ctrl', 'jquery', 'cowGame'], function (angular, ctrls, $
             form.$setPristine();
             form.$setUntouched();
             vm.person = null;
+            cowDialogService.reset();
         };
 
         vm.init = function () {
-            $('.modal-trigger').leanModal();
+
             vm.cowGame = new CowGame(cowService,20);
             vm.cowGame.init();
 
@@ -34,14 +35,19 @@ define(['angular', 'app.ctrl', 'jquery', 'cowGame'], function (angular, ctrls, $
             document.addEventListener('mousemove', mouseMove, false);
             document.addEventListener('mouseup', mouseClick, false);
 
-            heightNav =  $("nav").height()/2;
-            $("nav").hide();
-            $("footer").hide();
+           cowNavService.init();
 
         };
 
         vm.openHelp = function(){
-            $('#modal-help').openModal()
+
+        };
+
+        vm.dialogClosed = function(){
+            if(vm.cowGame.openDialog){
+                vm.cowGame.openDialog = false;
+            }
+
         };
 
         $scope.$on('$destroy', function () {
@@ -59,24 +65,18 @@ define(['angular', 'app.ctrl', 'jquery', 'cowGame'], function (angular, ctrls, $
 
         function mouseMove(event) {
             // update the mouse variable
-            if(event.clientY < heightNav){
-                $("nav").slideDown();
-            }
-           else{
-                $("nav").slideUp();
-                vm.cowGame.mouse2D.x = ( event.clientX / window.innerWidth  ) * 2 - 1;
-                vm.cowGame.mouse2D.y = -( event.clientY / (window.innerHeight) ) * 2 + 1;
-            }
+            cowNavService.displayNav(event,vm.cowGame.mouse2D);
 
         }
 
         function mouseClick(event) {
             event.preventDefault();
-            if (!$('#modal3').is(":visible") && !$('nav').is(":visible") && vm.cowGame.brush.targetName != null){
-                vm.selectedCube = vm.cowGame.brushAction();
-                $('#modal3').openModal();
-            }
 
+            if (!cowDialogService.isOpen('modal') && !cowNavService.isOpen() && vm.cowGame.tempCube.targetName != null){
+                vm.selectedCube = vm.cowGame.brushAction();
+                vm.cowGame.openDialog = true;
+                cowDialogService.open('modal',vm.dialogClosed);
+            }
         }
     }
     ])

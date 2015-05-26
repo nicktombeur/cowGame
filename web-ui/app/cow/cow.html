@@ -7,8 +7,9 @@
         <p>A bunch of text</p>
     </div>
 </div>
-<div id="modal3" class="modal bottom-sheet">
+<div id="modal" class="modal bottom-sheet">
     <div class="modal-content">
+        <h4>Fill in form</h4>
         <div class="row">
             <form name="cowCtrl.userForm" ng-submit="cowCtrl.submit(cowCtrl.userForm.$valid)" class="col s12" novalidate>
                 <div class="row">
@@ -64,6 +65,28 @@
                                ng-class="{ 'valid': cowCtrl.userForm.telephone.$valid, 'invalid': cowCtrl.userForm.telephone.$invalid && !cowCtrl.userForm.telephone.$pristine }"
                                required>
                         <label for="icon_telephone">Telephone</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="jobInterest"
+                                  name="jobInterest"
+                                  class="materialize-textarea"
+                                  ng-model="cowCtrl.person.jobInterest"
+                                  ng-class="{ 'valid': cowCtrl.userForm.jobInterest.$valid, 'invalid': cowCtrl.userForm.jobInterest.$invalid && !cowCtrl.userForm.jobInterest.$pristine }"
+                                  required></textarea>
+                        <label for="jobInterest">Job interest</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="knowCgi"
+                                  name="knowCgi"
+                                  class="materialize-textarea"
+                                  ng-model="cowCtrl.person.knowCgi"
+                                  ng-class="{ 'valid': cowCtrl.userForm.knowCgi.$valid, 'invalid': cowCtrl.userForm.knowCgi.$invalid && !cowCtrl.userForm.knowCgi.$pristine }"
+                                  required></textarea>
+                        <label for="knowCgi">How do you know CGI</label>
                     </div>
                 </div>
                 <div class="row">
