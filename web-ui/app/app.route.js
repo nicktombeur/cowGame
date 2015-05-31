@@ -17,6 +17,7 @@ define(['app.module'], function(app) {
             $routeProvider
                 .when('/', route.resolve('index',[]))
                 .when('/game', route.resolve('cow',['cowServices']))
+                .when('/admin', route.resolve('admin',['adminServices']))
                 .otherwise({
                     redirectTo: '/'
                 });
