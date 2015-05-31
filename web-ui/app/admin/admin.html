@@ -3,7 +3,7 @@
         <h1 class="header center">Registered games</h1>
         <div class="row">
             <div ng-repeat="game in adminCtrl.games track by $index" class="col s12 m12 l4">
-                <div class="card cgi-card cgi-cherry-red text-cgi-cherry-red">
+                <div class="card medium cgi-card cgi-cherry-red text-cgi-cherry-red">
                     <div class="card-image waves-effect waves-block waves-light">
                         <img class="activator" src="{{game.picture}}">
                     </div>
@@ -16,9 +16,9 @@
                         <p>{{game.fullDescription}}</p>
                     </div>
                     <div class="card-action text-cgi-honey">
-                        <a href="#/admin/edit/game.id">Edit</a>
-                        <a href='#/admin/end/game.id'>End</a>
-                        <a href='#/admin/delete/game.id'>Delete</a>
+                        <a href="#/admin/edit/{{game.id}}">Edit</a>
+                        <a href='#/admin/end/{{game.id}}'>End</a>
+                        <a href='#/admin/delete/{{game.id}}'>Delete</a>
                     </div>
                 </div>
             </div>
