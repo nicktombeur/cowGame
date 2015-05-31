@@ -4,8 +4,11 @@
         <div class="row">
             <div ng-repeat="game in adminCtrl.games track by $index" class="col s12 m12 l4">
                 <div class="card cgi-card cgi-cherry-red text-cgi-cherry-red">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator" src="{{game.picture}}">
+                    </div>
                     <div class="card-content white-text">
-                        <span class="card-title activator">{{game.title}}</span>
+                        <span class="card-title activator text-cgi-cherry-red">{{game.title}}</span>
                         <p>{{game.shortDescription}}</p>
                     </div>
                     <div class="card-reveal">
