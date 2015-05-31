@@ -2,16 +2,20 @@
     <div class="section">
         <h1 class="header center">Registered games</h1>
         <div class="row">
-            <div class="col s12 m6 s3">
-                <div class="card cgi-cherry-red text-cgi-cherry-red">
+            <div ng-repeat="game in adminCtrl.games track by $index" class="col s12 m12 l4">
+                <div class="card cgi-card cgi-cherry-red text-cgi-cherry-red">
                     <div class="card-content white-text">
-                        <span class="card-title">First Game</span>
-                        <p>EVENT ANTWERPEN</p>
+                        <span class="card-title activator">{{game.title}}</span>
+                        <p>{{game.shortDescription}}</p>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">{{game.title}} <i class="mdi-navigation-close right"></i></span>
+                        <p>{{game.fullDescription}}</p>
                     </div>
                     <div class="card-action text-cgi-honey">
-                        <a href="#">Edit</a>
-                        <a href='#'>End</a>
-                        <a href='#'>Delete</a>
+                        <a href="#/admin/edit/game.id">Edit</a>
+                        <a href='#/admin/end/game.id'>End</a>
+                        <a href='#/admin/delete/game.id'>Delete</a>
                     </div>
                 </div>
             </div>
