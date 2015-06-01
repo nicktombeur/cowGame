@@ -55,6 +55,7 @@ define(['angular', 'app.ctrl', 'jquery', 'cowGame'], function (angular, ctrls, $
             vm.cowGame.requestId = undefined;
             document.removeEventListener('mousemove', mouseMove, false);
             document.removeEventListener('mouseup', mouseClick, false);
+            cowNavService.reset();
         });
 
         function animate(){

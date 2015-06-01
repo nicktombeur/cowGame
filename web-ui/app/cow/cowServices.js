@@ -67,6 +67,7 @@ define(['app.service'], function (services) {
 
                 $("nav").hide();
                 $("footer").hide();
+                $(".mdi-action-help").show();
             }
             ,isOpen: function(elementId){
                 return $('#' + elementId).is(":visible");
@@ -80,6 +81,11 @@ define(['app.service'], function (services) {
                     mouse2D.x = ( event.clientX / window.innerWidth  ) * 2 - 1;
                     mouse2D.y = -( event.clientY / (window.innerHeight) ) * 2 + 1;
                 }
+            },
+            reset: function(){
+                $("nav").slideDown();
+                $("footer").show();
+
             }
         }
     });

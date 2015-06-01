@@ -21,7 +21,7 @@ define(['angular'], function () {
                 var viewsDirectory = '',
 
                     setViewsDirectory = function (viewsDir) {
-                        viewsDirectory = viewsDir + '/';
+                        viewsDirectory = viewsDir;
                     },
 
                     getViewsDirectory = function () {
@@ -40,14 +40,19 @@ define(['angular'], function () {
              */
             this.route = function (routeConfig) {
 
-                var resolve = function (view, services) {
+                var resolve = function (name, services, path) {
 
-                        var viewDir = view + '/';
+                        var _path = path || name;
+
+                        var _name = name || '';
+
+                        var root = '/' + _path + '/';
+
                         var routeDef = {};
 
-                        routeDef.templateUrl = routeConfig.getViewsDirectory() + viewDir + view + '.html';
-                        routeDef.controller = capitalizeFirstLetter(view) + 'Controller';
-                        routeDef.controllerAs = view + 'Ctrl';
+                        routeDef.templateUrl = routeConfig.getViewsDirectory() + root + _name + '.html';
+                        routeDef.controller = capitalizeFirstLetter(_name) + 'Controller';
+                        routeDef.controllerAs = _name + 'Ctrl';
                         routeDef.resolve = {
 
                             load: ['$q', '$rootScope', function ($q, $rootScope) {
@@ -56,7 +61,7 @@ define(['angular'], function () {
                                  * init the dependencies array
                                  * @type {Array}
                                  */
-                                var dependencies = [routeConfig.getViewsDirectory() + view + '/' + view + 'Ctrl.js'];
+                                var dependencies = [routeConfig.getViewsDirectory() + root + _name + 'Ctrl.js'];
 
                                 /**
                                  * add services to dependencies array
@@ -65,7 +70,12 @@ define(['angular'], function () {
                                     var service;
                                     for (service in services) {
                                         if (services.hasOwnProperty(service)) {
-                                            dependencies.push(routeConfig.getViewsDirectory() + viewDir + '/' + services[service] + '.js');
+                                            if(services[service][0] == '/'){
+                                                dependencies.push(routeConfig.getViewsDirectory() + services[service] + '.js');
+                                            }else{
+                                                dependencies.push(routeConfig.getViewsDirectory() + root + '/' + services[service] + '.js');
+                                            }
+
                                         }
                                     }
                                 }
