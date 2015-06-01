@@ -5,7 +5,7 @@
             <div ng-repeat="game in adminCtrl.games track by $index" class="col s12 m12 l4">
                 <div class="card medium cgi-card cgi-cherry-red text-cgi-cherry-red">
                     <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="{{game.picture}}">
+                        <img class="activator" ng-src="{{game.picture}}">
                     </div>
                     <div class="card-content white-text">
                         <span class="card-title activator text-cgi-cherry-red">{{game.title}}</span>
@@ -16,9 +16,9 @@
                         <p>{{game.fullDescription}}</p>
                     </div>
                     <div class="card-action text-cgi-honey">
-                        <a href="#/admin/edit/{{game.id}}">Edit</a>
-                        <a href='#/admin/end/{{game.id}}'>End</a>
-                        <a href='#/admin/delete/{{game.id}}'>Delete</a>
+                        <a ng-href="#/admin/edit/{{game.id}}">Edit</a>
+                        <a ng-href='#/admin/end/{{game.id}}'>End</a>
+                        <a ng-href='#/admin/delete/{{game.id}}'>Delete</a>
                     </div>
                 </div>
             </div>
