@@ -1,9 +1,15 @@
 define(['angular', 'app.ctrl', 'jquery'], function (angular, ctrls, $) {
 
-    ctrls.controller('AdminDetailController', ['$scope', 'adminDetailService', function ($scope,adminDetailService) {
+    var injectParams = ['$scope', 'adminDetailService'];
+
+
+   var adminController =  function ($scope,adminDetailService) {
         var vm = this;
 
-    }]);
+    };
 
+    adminController.$inject = injectParams;
+
+    ctrls.register.controller('AdminDetailController',adminController);
 
 });

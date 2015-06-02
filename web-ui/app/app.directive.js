@@ -1,18 +1,21 @@
 define(['angular'], function(angular) {
-    var service = angular.module('cowGame.directive', []).config(['$controllerProvider',
+    var directive = angular.module('cowGame.directive', []).config(['$controllerProvider',
         '$compileProvider', '$filterProvider', '$provide',function($controllerProvider,
                                                                     $compileProvider, $filterProvider, $provide){
         /**
          * override angular default module api for creating components
          * @type {Function|register|register|register}
          */
-        service.controller = $controllerProvider.register;
-        service.service = $provide.service;
-        service.factory = $provide.factory;
-        service.filter = $filterProvider.register;
-        service.directive = $compileProvider.directive;
+        directive.register =
+        {
+            controller: $controllerProvider.register,
+            directive: $compileProvider.directive,
+            filter: $filterProvider.register,
+            factory: $provide.factory,
+            service: $provide.service
+        };
 
     }]);
 
-    return service;
+    return directive;
 });

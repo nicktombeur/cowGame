@@ -1,6 +1,8 @@
 define(['angular', 'app.ctrl', 'jquery', 'cowGame'], function (angular, ctrls, $) {
 
-    ctrls.controller('CowController', ['$scope', 'cowService','cowDialogService','cowNavService', function ($scope, cowService,cowDialogService,cowNavService) {
+    var injectParams = ['$scope', 'cowService','cowDialogService','cowNavService'];
+
+    var cowController =  function ($scope, cowService,cowDialogService,cowNavService) {
         var vm = this;
         vm.test = "Hello there";
         vm.selectedCube = {};
@@ -80,6 +82,9 @@ define(['angular', 'app.ctrl', 'jquery', 'cowGame'], function (angular, ctrls, $
             }
         }
     }
-    ])
-    ;
+
+    cowController.$inject = injectParams;
+
+    ctrls.register.controller("CowController",cowController);
+
 });

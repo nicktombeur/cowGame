@@ -12,11 +12,14 @@ define(['angular'], function(angular) {
              * override angular default module api for creating components
              * @type {Function|register|register|register}
              */
-            ctrl.controller = $controllerProvider.register;
-            ctrl.service = $provide.service;
-            ctrl.factory = $provide.factory;
-            ctrl.filter = $filterProvider.register;
-            ctrl.directive = $compileProvider.directive;
+            ctrl.register =
+                {
+                    controller: $controllerProvider.register,
+                    directive: $compileProvider.directive,
+                    filter: $filterProvider.register,
+                    factory: $provide.factory,
+                    service: $provide.service
+                };
 
         }]);
 

@@ -11,7 +11,7 @@
 <body>
 
     <!-- Header -->
-    <nav role="navigation">
+    <nav role="navigation" ng-controller="NavbarController as navbar">
         <div class="nav-wrapper container">
             <a href="#/" class="brand-logo">CGI</a>
             <ul class="right hide-on-med-and-down">
@@ -21,7 +21,7 @@
 
             <ul id="nav-mobile" class="side-nav">
                 <li><a href="#/">Play</a></li>
-                <li><a href="#/admin/">Login</a></li>
+                <li><a href="#/admin/">{{ navbar.loginLogoutText }}</a></li>
             </ul>
             <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
         </div>

@@ -1,5 +1,13 @@
 define(['app.service'], function (services) {
-    services.factory('adminDetailService', ["$http", function ($http) {
+
+    var injectParams = ['$http'];
+
+    var adminDetailService = function ($http) {
         return {}
-    }]);
+    };
+
+
+    adminDetailService.$inject = injectParams;
+
+    services.register.factory('adminDetailService', adminDetailService);
 });

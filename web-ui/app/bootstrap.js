@@ -53,7 +53,7 @@ require.config({
 
 require([
         'angular', 'jquery','materialize','routeResolver','app.ctrl','app.service','app.directive',
-        'app.route'],
+        'app.route','common/authService','common/navbarController'],
     function (angular, $) {
         angular.element(document).ready(function () {
             angular.bootstrap(document, ['cowGame']);

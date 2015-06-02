@@ -40,7 +40,7 @@ define(['angular'], function () {
              */
             this.route = function (routeConfig) {
 
-                var resolve = function (name, services, path) {
+                var resolve = function (name, services, secure,path) {
 
                         var _path = path || name;
 
@@ -53,6 +53,7 @@ define(['angular'], function () {
                         routeDef.templateUrl = routeConfig.getViewsDirectory() + root + _name + '.html';
                         routeDef.controller = capitalizeFirstLetter(_name) + 'Controller';
                         routeDef.controllerAs = _name + 'Ctrl';
+                        routeDef.secure = (secure) ? secure : false;
                         routeDef.resolve = {
 
                             load: ['$q', '$rootScope', function ($q, $rootScope) {
@@ -73,7 +74,7 @@ define(['angular'], function () {
                                             if(services[service][0] == '/'){
                                                 dependencies.push(routeConfig.getViewsDirectory() + services[service] + '.js');
                                             }else{
-                                                dependencies.push(routeConfig.getViewsDirectory() + root + '/' + services[service] + '.js');
+                                                dependencies.push(routeConfig.getViewsDirectory() + root + services[service] + '.js');
                                             }
 
                                         }
