@@ -1,5 +1,5 @@
 define(['app.service'], function (services) {
-    services.register.factory('cowService',["$http", function ($http) {
+    services.factory('cowService',["$http", function ($http) {
 
         var field = [];
 
@@ -41,7 +41,7 @@ define(['app.service'], function (services) {
 
     }]);
 
-    services.register.factory('cowDialogService', function () {
+    services.factory('cowDialogService', function () {
         return {
             open: function(elementId,onClose) {
                 $('#' + elementId).openModal({complete:onClose});
@@ -58,7 +58,7 @@ define(['app.service'], function (services) {
         };
     });
 
-    services.register.factory('cowNavService',function(){
+    services.factory('cowNavService',function(){
         var heightNav;
 
         return {

@@ -38,6 +38,6 @@ define(['app.service'], function (services) {
 
     adminService.$inject = injectParams;
 
-    services.register.factory('adminService', adminService);
+    services.factory('adminService', adminService);
 
 });

@@ -9,5 +9,5 @@ define(['app.service'], function (services) {
 
     adminDetailService.$inject = injectParams;
 
-    services.register.factory('adminDetailService', adminDetailService);
+    services.factory('adminDetailService', adminDetailService);
 });

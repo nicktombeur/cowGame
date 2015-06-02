@@ -3,7 +3,7 @@
  */
 'use strict';
 
-define(['app.module', 'jquery'], function (ctrls, $) {
+define(['app.ctrl', 'jquery'], function (ctrls, $) {
 
     var indexController = function () {
         this.init = function () {
@@ -14,6 +14,6 @@ define(['app.module', 'jquery'], function (ctrls, $) {
         this.test = "Some motivational text here ...";
     };
 
-    ctrls.register.controller('IndexController', indexController);
+    ctrls.controller('IndexController', indexController);
 
 });

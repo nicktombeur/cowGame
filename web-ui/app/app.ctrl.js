@@ -3,25 +3,22 @@
  */
 'use strict';
 
-define(['angular'], function(angular) {
+define(['angular'], function (angular) {
     var ctrl = angular.module('cowGame.ctrl', [])
 
         .config(['$controllerProvider',
-        '$compileProvider', '$filterProvider', '$provide', function ($controllerProvider, $compileProvider, $filterProvider, $provide) {
-            /**
-             * override angular default module api for creating components
-             * @type {Function|register|register|register}
-             */
-            ctrl.register =
-                {
-                    controller: $controllerProvider.register,
-                    directive: $compileProvider.directive,
-                    filter: $filterProvider.register,
-                    factory: $provide.factory,
-                    service: $provide.service
-                };
+            '$compileProvider', '$filterProvider', '$provide', function ($controllerProvider, $compileProvider, $filterProvider, $provide) {
+                /**
+                 * override angular default module api for creating components
+                 * @type {Function|register|register|register}
+                 */
+                ctrl.controller = $controllerProvider.register;
+                ctrl.directive = $compileProvider.directive;
+                ctrl.filter = $filterProvider.register;
+                ctrl.factory = $provide.factory;
+                ctrl.service = $provide.service;
 
-        }]);
+            }]);
 
     return ctrl;
 });

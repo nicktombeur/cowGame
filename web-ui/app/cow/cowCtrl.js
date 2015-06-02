@@ -85,6 +85,6 @@ define(['angular', 'app.ctrl', 'jquery', 'cowGame'], function (angular, ctrls, $
 
     cowController.$inject = injectParams;
 
-    ctrls.register.controller("CowController",cowController);
+    ctrls.controller("CowController",cowController);
 
 });

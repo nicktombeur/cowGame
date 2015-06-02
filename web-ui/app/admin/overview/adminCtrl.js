@@ -1,4 +1,4 @@
-define(['angular', 'app.ctrl', 'jquery'], function (angular, ctrls, $) {
+define(['angular', 'app.ctrl', 'jquery','admin/overview/adminServices'], function (angular, ctrls, $) {
 
     var injectParams = ['$scope', 'adminService'];
 
@@ -11,6 +11,6 @@ define(['angular', 'app.ctrl', 'jquery'], function (angular, ctrls, $) {
 
     adminController.$inject = injectParams;
 
-    ctrls.register.controller('AdminController', adminController);
+    ctrls.controller('AdminController', adminController);
 
 });

@@ -33,6 +33,6 @@ define(['app.ctrl'], function (app) {
 
     LoginController.$inject = injectParams;
 
-    app.register.controller('LoginController', LoginController);
+    app.controller('LoginController', LoginController);
 
 });

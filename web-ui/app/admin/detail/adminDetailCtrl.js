@@ -10,6 +10,6 @@ define(['angular', 'app.ctrl', 'jquery'], function (angular, ctrls, $) {
 
     adminController.$inject = injectParams;
 
-    ctrls.register.controller('AdminDetailController',adminController);
+    ctrls.controller('AdminDetailController',adminController);
 
 });
