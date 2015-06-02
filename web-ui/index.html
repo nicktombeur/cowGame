@@ -16,12 +16,13 @@
             <a href="#/" class="brand-logo">CGI</a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="#/"><i class="mdi-hardware-gamepad"></i></a></li>
-                <li><a href="#admin/"><i class="mdi-action-https"></i></a></li>
+                <li><a href="#admin/"><i class="mdi-action-perm-identity"></i></a></li>
+                <li><a ng-click="navbar.loginOrOut()"><i ng-class="{'mdi-action-lock-outline': navbar.login, 'mdi-action-lock-open' : !navbar.login}"></i></a></li>
             </ul>
 
             <ul id="nav-mobile" class="side-nav">
                 <li><a href="#/">Play</a></li>
-                <li><a href="#/admin/">{{ navbar.loginLogoutText }}</a></li>
+                <li><a href="#/admin/">Admin</a></li>
             </ul>
             <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
         </div>

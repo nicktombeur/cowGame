@@ -1,34 +1,32 @@
-﻿<div class="view">
-    <div class="container">
-        <header>
-            <h3><span class="glyphicon glyphicon-lock"></span> Login</h3>
-        </header>
+﻿<div class="container">
+    <div class="section">
+        <h1 class="header center">Login</h1>
         <form name="loginForm" novalidate>
             <div class="login">
                 <div class="row">
-                    <div class="col-md-2">
-                        Email:
-                    </div>
-                    <div class="col-md-10">
-                        <input type="email" name="email" class="form-control" data-ng-model="vm.email" required />
-                        <span class="errorMessage" ng-show="loginForm.email.$touched && loginForm.email.$invalid">
-                            Email is required
-                        </span>
+                    <div class="input-field col s12">
+                        <i class="mdi-communication-email prefix"></i>
+                        <input name="email"
+                               ng-model="loginCtrl.email"
+                               id="email"
+                               type="email"
+                               ng-class="{ 'valid': loginForm.email.$valid, 'invalid': loginForm.email.$invalid && loginForm.email.$touched }"
+                               required>
+                        <label for="email">Email</label>
                     </div>
                 </div>
                 <br />
                 <div class="row">
-                    <div class="col-md-2">
-                        Password:
-                    </div>
-                    <div class="col-md-10">
-                        <input type="password" name="password" class="form-control"
-                               data-ng-model="vm.password"
-                               data-ng-minlength="6"
-                               required />
-                        <span class="errorMessage" ng-show="loginForm.password.$touched && loginForm.password.$invalid">
-                            Password is required
-                        </span>
+                    <div class="input-field col s12">
+                        <i class="mdi-action-lock-open prefix"></i>
+                        <input name="password"
+                               ng-model="loginCtrl.password"
+                               id="password"
+                               type="password"
+                               ng-class="{ 'valid': loginForm.password.$valid, 'invalid': loginForm.password.$invalid && loginForm.password.$touched }"
+                               ng-minlength="6"
+                               required>
+                        <label for="email">Password</label>
                     </div>
                 </div>
                 <br />

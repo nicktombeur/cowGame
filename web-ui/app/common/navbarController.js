@@ -7,27 +7,21 @@ define(['app.module'], function (app) {
     var NavbarController = function ($scope, $location, authService) {
         var vm = this;
 
-        vm.isCollapsed = false;
-        vm.appTitle = '';
-
-        vm.highlight = function (path) {
-            return $location.path().substr(0, path.length) === path;
-        };
-
         vm.loginOrOut = function () {
             setLoginLogoutText();
             var isAuthenticated = authService.user.isAuthenticated;
-            if (isAuthenticated) { //logout 
-                authService.logout().then(function () {
-                    $location.path('/');
-                    return;
-                });
+            if (isAuthenticated) { //logout
+
+                 authService.logout();
+
+                 $location.path('/');
+
             }
             redirectToLogin();
         };
 
         function redirectToLogin() {
-            var path = '/login' + $location.$$path;
+            var path = '/login' + $location.$$path.replace('/login','');
             $location.replace();
             $location.path(path);
         }
@@ -41,7 +35,7 @@ define(['app.module'], function (app) {
         });
 
         function setLoginLogoutText() {
-            vm.loginLogoutText = (authService.user.isAuthenticated) ? 'Logout' : 'Login';
+            vm.login = (authService.user.isAuthenticated) ? true : false;
         }
 
         setLoginLogoutText();
