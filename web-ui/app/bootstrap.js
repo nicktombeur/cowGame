@@ -64,6 +64,7 @@ require([
         'app.route',
 
         'common/authService',
+        'common/authDirective',
         'common/navbarController'
     ],
     function (angular, $) {

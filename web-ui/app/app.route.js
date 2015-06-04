@@ -35,12 +35,16 @@ define(['app.module'], function (app) {
                 .when('/admin', route.resolve({
                     name: 'admin',
                     services: ['adminServices'],
+                    access: {
+                        requiresLogin: true,
+                        requiredPermissions: ['Admin'],
+                        permissionType: routeResolverProvider.atLeastOne
+                    },
                     path: 'admin/overview'
                 }))
                 .when('/admin/edit/:id', route.resolve({
                     name: 'adminDetail',
                     services: ['adminDetailServices'],
-                    secured: true,
                     path: 'admin/detail'
                 }))
                 .when('/login/:redirect*?', route.resolve({
@@ -56,13 +60,27 @@ define(['app.module'], function (app) {
                 //Client-side security. Server-side framework MUST add it's
                 //own security as well since client-based security is easily hacked
                 $rootScope.$on("$routeChangeStart", function (event, next, current) {
-                    if (next && next.$$route && next.$$route.secure) {
-                        if (!authService.user.isAuthenticated) {
-                            $rootScope.$evalAsync(function () {
-                                authService.redirectToLogin();
-                            });
+                    if (next && next.$$route && next.$$route.access) {
+
+                        var authorised;
+
+                            authorised = authService.authorize(next.$$route.access.requiresLogin,
+                                next.$$route.access.requiredPermissions,
+                                next.$$route.access.permissionType);
+
+                            if (authorised === 'loginRequired') {
+
+                                $rootScope.$evalAsync(function () {
+                                    authService.redirectToLogin();
+                                });
+
+                            } else if (authorised === 'notAuthorised') {
+                                $rootScope.$evalAsync(function () {
+                                    authService.redirectToLogin();
+                                });
+                            }
                         }
-                    }
+
                 });
 
             }]);

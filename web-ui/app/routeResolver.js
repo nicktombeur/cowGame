@@ -29,6 +29,8 @@ define(['angular'], function () {
                     };
 
                 return {
+                    combinationRequired: 'combinationRequired',
+                    atLeastOne: "atLeastOne",
                     setViewsDirectory: setViewsDirectory,
                     getViewsDirectory: getViewsDirectory
 
@@ -53,7 +55,7 @@ define(['angular'], function () {
                         routeDef.templateUrl = routeConfig.getViewsDirectory() + root + _name + '.html';
                         routeDef.controller = capitalizeFirstLetter(_name) + 'Controller';
                         routeDef.controllerAs = _name + 'Ctrl';
-                        routeDef.secure = (conf.secured) ? conf.secured : false;
+                        routeDef.access = conf.access;
                         routeDef.resolve = {
 
                             load: ['$q', '$rootScope', function ($q, $rootScope) {
