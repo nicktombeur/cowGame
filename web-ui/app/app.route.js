@@ -1,39 +1,55 @@
 'use strict';
 
 define(['app.module'], function (app) {
-    return  app.config(['$routeProvider', 'routeResolverProvider', '$controllerProvider',
-            '$compileProvider', '$filterProvider', '$provide', '$httpProvider',
+    return app.config(['$routeProvider', 'routeResolverProvider', '$controllerProvider',
+        '$compileProvider', '$filterProvider', '$provide', '$httpProvider',
 
-            function ($routeProvider, routeResolverProvider, $controllerProvider,
-                      $compileProvider, $filterProvider, $provide, $httpProvider) {
+        function ($routeProvider, routeResolverProvider, $controllerProvider,
+                  $compileProvider, $filterProvider, $provide, $httpProvider) {
 
-                app.register =
-                {
-                    controller: $controllerProvider.register,
-                    directive: $compileProvider.directive,
-                    filter: $filterProvider.register,
-                    factory: $provide.factory,
-                    service: $provide.service
-                };
+            app.register =
+            {
+                controller: $controllerProvider.register,
+                directive: $compileProvider.directive,
+                filter: $filterProvider.register,
+                factory: $provide.factory,
+                service: $provide.service
+            };
 
-                routeResolverProvider.routeConfig.setViewsDirectory("/app");
+            routeResolverProvider.routeConfig.setViewsDirectory("/app");
 
-                /**
-                 * get referance to the route method of routeResolverProvider
-                 * @type {*}
-                 */
-                var route = routeResolverProvider.route;
+            /**
+             * get referance to the route method of routeResolverProvider
+             * @type {*}
+             */
+            var route = routeResolverProvider.route;
 
-                $routeProvider
-                    .when('/', route.resolve('index', []))
-                    .when('/game', route.resolve('cow', ['cowServices']))
-                    .when('/admin', route.resolve('admin', ['adminServices'], true,'admin/overview'))
-                    .when('/admin/edit/:id', route.resolve('adminDetail', ['adminDetailServices'],true, 'admin/detail'))
-                    .when('/login/:redirect*?', route.resolve('login', []))
-                    .otherwise({
-                        redirectTo: '/'
-                    });
-            }])
+            $routeProvider
+                .when('/', route.resolve({
+                    name: 'index'
+                }))
+                .when('/game', route.resolve({
+                    name: 'cow',
+                    services: ['cowServices']
+                }))
+                .when('/admin', route.resolve({
+                    name: 'admin',
+                    services: ['adminServices'],
+                    path: 'admin/overview'
+                }))
+                .when('/admin/edit/:id', route.resolve({
+                    name: 'adminDetail',
+                    services: ['adminDetailServices'],
+                    secured: true,
+                    path: 'admin/detail'
+                }))
+                .when('/login/:redirect*?', route.resolve({
+                    name: 'login'
+                }))
+                .otherwise({
+                    redirectTo: '/'
+                });
+        }])
         .run(['$rootScope', '$location', 'authService',
             function ($rootScope, $location, authService) {
 

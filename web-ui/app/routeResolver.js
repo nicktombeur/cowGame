@@ -40,11 +40,11 @@ define(['angular'], function () {
              */
             this.route = function (routeConfig) {
 
-                var resolve = function (name, services, secure,path) {
+                var resolve = function (conf) {
 
-                        var _path = path || name;
+                        var _path = conf.path || conf.name;
 
-                        var _name = name || '';
+                        var _name = conf.name || '';
 
                         var root = '/' + _path + '/';
 
@@ -53,7 +53,7 @@ define(['angular'], function () {
                         routeDef.templateUrl = routeConfig.getViewsDirectory() + root + _name + '.html';
                         routeDef.controller = capitalizeFirstLetter(_name) + 'Controller';
                         routeDef.controllerAs = _name + 'Ctrl';
-                        routeDef.secure = (secure) ? secure : false;
+                        routeDef.secure = (conf.secured) ? conf.secured : false;
                         routeDef.resolve = {
 
                             load: ['$q', '$rootScope', function ($q, $rootScope) {
@@ -67,14 +67,14 @@ define(['angular'], function () {
                                 /**
                                  * add services to dependencies array
                                  */
-                                if (services) {
+                                if (conf.services) {
                                     var service;
-                                    for (service in services) {
-                                        if (services.hasOwnProperty(service)) {
-                                            if(services[service][0] == '/'){
-                                                dependencies.push(routeConfig.getViewsDirectory() + services[service] + '.js');
+                                    for (service in conf.services) {
+                                        if (conf.services.hasOwnProperty(service)) {
+                                            if(conf.services[service][0] == '/'){
+                                                dependencies.push(routeConfig.getViewsDirectory() + conf.services[service] + '.js');
                                             }else{
-                                                dependencies.push(routeConfig.getViewsDirectory() + root + services[service] + '.js');
+                                                dependencies.push(routeConfig.getViewsDirectory() + root + conf.services[service] + '.js');
                                             }
 
                                         }
