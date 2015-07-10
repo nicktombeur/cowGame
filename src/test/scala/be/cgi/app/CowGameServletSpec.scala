@@ -1,6 +1,6 @@
 package be.cgi.app
 
-import be.cgi.app.index.IndexController
+import be.cgi.app.index.controller.IndexController
 import org.scalatra.test.specs2._
 
 // For more on Specs2, see http://etorreborre.github.com/specs2/guide/org.specs2.guide.QuickStart.html
