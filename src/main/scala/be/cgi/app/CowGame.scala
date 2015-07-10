@@ -5,5 +5,5 @@ package be.cgi.app
  */
 object CowGame {
   final val DbName = "cow_game"
-  final val TestCol = "test"
+  final val EventCol = "event"
 }
