@@ -1,25 +1,25 @@
 define(['app.service'], function (services) {
 
-    var injectParams = ['$http'];
+    var injectParams = ['$http','$log','API_URL'];
 
-    var adminService = function ($http) {
+    var adminService = function ($http,$log,API_URL) {
         return {
-            getSelectedCubesHTTP: function (gameId) {
-                return $http.get('/api/v1/admin/' + gameId)
+            getGames: function () {
+                $log.info("Getting events");
+                return $http.get(API_URL+'/api/event/')
                     .then(
                     function (response) {
-                        return {
-                            title: response.data.title,
-                            cost: response.data.price
-                        };
+                        $log.debug("Getting events - SUCCESS");
+                        return response.data;
                     },
                     function (httpError) {
+                        $log.debug("Getting events - FAILED");
                         // translate the error
                         throw httpError.status + " : " +
                             httpError.data;
                     });
             },
-            getGames: function () {
+            getMockGames: function () {
                 return [
                     {id: "1234", title: "First Game", shortDescription: "First Game description", fullDescription: "ezufohezuofzeufhezufohezufhezufheuzifheziufhezuifhezf", picture: "https://ce12b193d2f7d75eb0d1-a678cc8f4f890e88f71fe9818106b11e.ssl.cf1.rackcdn.com/vault/img/2011/05/10/4dc92e52c29e0685030015b4/medium_cowpielogo.jpg"},
                     {id: "123453", title: "Game", shortDescription: "First Game description", fullDescription: "ezufohezuofzeufhezufohezufhezufheuzifheziufhezuifhezf", picture: "https://ce12b193d2f7d75eb0d1-a678cc8f4f890e88f71fe9818106b11e.ssl.cf1.rackcdn.com/vault/img/2011/05/10/4dc92e52c29e0685030015b4/medium_cowpielogo.jpg"},

@@ -2,10 +2,12 @@
 
 define(['app.module'], function (app) {
     return app.config(['$routeProvider', 'routeResolverProvider', '$controllerProvider',
-        '$compileProvider', '$filterProvider', '$provide', '$httpProvider',
+        '$compileProvider', '$filterProvider', '$provide','$logProvider',
 
         function ($routeProvider, routeResolverProvider, $controllerProvider,
-                  $compileProvider, $filterProvider, $provide, $httpProvider) {
+                  $compileProvider, $filterProvider, $provide,$logProvider) {
+
+            $logProvider.debugEnabled(true);
 
             app.register =
             {
@@ -43,6 +45,11 @@ define(['app.module'], function (app) {
                     path: 'admin/overview'
                 }))
                 .when('/admin/edit/:id', route.resolve({
+                    name: 'adminDetail',
+                    services: ['adminDetailServices'],
+                    path: 'admin/detail'
+                }))
+                .when('/admin/edit/', route.resolve({
                     name: 'adminDetail',
                     services: ['adminDetailServices'],
                     path: 'admin/detail'

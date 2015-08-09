@@ -64,8 +64,10 @@ require([
         'app.route',
 
         'common/authService',
+        'common/authInterceptor',
         'common/authDirective',
-        'common/navbarController'
+        'common/navbarController',
+        'common/appConstants'
     ],
     function (angular, $) {
         angular.element(document).ready(function () {

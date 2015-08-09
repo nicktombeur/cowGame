@@ -229,14 +229,14 @@ CowGame.prototype.update = function() {
     this.keyboard.update();
     if (!this.openDialog) {
         // move forwards/backwards
-        if (this.keyboard.pressed("Z"))
+        if (this.keyboard.pressed("up"))
             this.person.translateZ(-moveDistance);
-        if (this.keyboard.pressed("S"))
+        if (this.keyboard.pressed("down"))
             this.person.translateZ(moveDistance);
         // move left/right (strafe)
-        if (this.keyboard.pressed("Q"))
+        if (this.keyboard.pressed("left"))
             this.person.translateX(-moveDistance);
-        if (this.keyboard.pressed("D"))
+        if (this.keyboard.pressed("right"))
             this.person.translateX(moveDistance);
         // move up/down (fly)
         if (this.keyboard.pressed("R"))

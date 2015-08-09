@@ -5,7 +5,7 @@ define(['angular', 'app.ctrl', 'jquery','admin/overview/adminServices'], functio
     var adminController = function ($scope,adminService) {
         var vm = this;
 
-        vm.games = adminService.getGames();
+        vm.games = adminService.getMockGames();
 
     };
 

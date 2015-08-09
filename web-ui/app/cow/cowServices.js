@@ -54,6 +54,7 @@ define(['app.service'], function (services) {
             },
             reset: function(){
                 $(".active").removeClass("active");
+                $(".drag-target").remove();
             }
         };
     });

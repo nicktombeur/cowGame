@@ -9,6 +9,8 @@ define(['angular', 'app.ctrl', 'jquery', 'cowGame'], function (angular, ctrls, $
         vm.person = {};
         vm.cowGame = {};
 
+        init();
+
         vm.submit = function(valid){
             if(valid){
                 cowService.addUser(vm.selectedCube);
@@ -73,7 +75,7 @@ define(['angular', 'app.ctrl', 'jquery', 'cowGame'], function (angular, ctrls, $
         }
 
         function mouseClick(event) {
-            event.preventDefault();
+           // event.preventDefault();
 
             if (!cowDialogService.isOpen('modal') && !cowNavService.isOpen() && vm.cowGame.tempCube.targetName != null){
                 vm.selectedCube = vm.cowGame.brushAction();
@@ -81,7 +83,16 @@ define(['angular', 'app.ctrl', 'jquery', 'cowGame'], function (angular, ctrls, $
                 cowDialogService.open('modal',vm.dialogClosed);
             }
         }
-    }
+        function init(){
+            $('.modal').leanModal({
+                    dismissible: true, // Modal can be dismissed by clicking outside of the modal
+                    opacity: .5, // Opacity of modal background
+                    in_duration: 300, // Transition in duration
+                    out_duration: 200 // Transition out duration
+                }
+            );
+        }
+    };
 
     cowController.$inject = injectParams;
 

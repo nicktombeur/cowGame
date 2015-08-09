@@ -1,1 +1,96 @@
-DETAIL
+<div class="container">
+    <div class="section">
+        <h1 class="header center">Create event</h1>
+
+        <form name="event">
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="mdi-action-account-circle prefix"></i>
+                    <input name="name"
+                           ng-model="adminDetailCtrl.event.name"
+                           ng-class="{ 'valid': adminDetailCtrl.event.name.$valid, 'invalid': adminDetailCtrl.event.name.$invalid && !adminDetailCtrl.event.name.$pristine }"
+                           id="name"
+                           type="text"
+                           ng-minlength=3
+                           ng-maxlength=20
+                           required>
+
+                    <label for="name">Name</label>
+
+                    <p ng-show="adminDetailCtrl.event.name.$error.minlength && !adminDetailCtrl.event.name.$pristine"
+                       class="help-block">name is too short.</p>
+
+                    <p ng-show="adminDetailCtrl.event.name.$error.maxlength && !adminDetailCtrl.event.name.$pristine"
+                       class="help-block">name is too long.</p>
+                </div>
+                <div class="input-field col s2">
+                    <i class="mdi-communication-size prefix"></i>
+                    <input name="size"
+                           ng-model="adminDetailCtrl.event.size"
+                           id="size"
+                           type="number"
+                           ng-class="{ 'valid': adminDetailCtrl.event.size.$valid, 'invalid': adminDetailCtrl.event.size.$invalid && !adminDetailCtrl.event.size.$pristine }"
+                           required>
+                    <label for="size">size</label>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="mdi-action-account-circle prefix"></i>
+                    <input name="shortDescription"
+                           id="shortDescription"
+                           type="text"
+                           ng-model="adminDetailCtrl.event.shortDescription"
+                           ng-class="{ 'valid': adminDetailCtrl.event.shortDescription.$valid, 'invalid': adminDetailCtrl.event.shortDescription.$invalid && !adminDetailCtrl.event.shortDescription.$pristine }"
+                           ng-minlength=3
+                           ng-maxlength=20
+                           required>
+                    <label for="shortDescription">Description</label>
+
+                    <p ng-show="adminDetailCtrl.event.shortDescription.$error.minlength && !adminDetailCtrl.event.shortDescription.$pristine"
+                       class="help-block">description is too short.</p>
+
+                    <p ng-show="adminDetailCtrl.event.shortDescription.$error.maxlength && !adminDetailCtrl.event.shortDescription.$pristine"
+                       class="help-block">description is too long.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="mdi-communication-phone prefix"></i>
+                    <textarea name="longDescription"
+                           ng-model="adminDetailCtrl.event.longDescription"
+                           id="longDescription"
+                           class="materialize-textarea"
+                           ng-class="{ 'valid': adminDetailCtrl.event.longDescription.$valid, 'invalid': adminDetailCtrl.event.longDescription.$invalid && !adminDetailCtrl.event.longDescription.$pristine }"
+                           required></textarea>
+                    <label for="longDescription">Full description</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="image"
+                           name="image"
+                           type="text"
+                           ng-model="adminDetailCtrl.event.image"
+                           ng-class="{ 'valid': adminDetailCtrl.event.image.$valid, 'invalid': adminDetailCtrl.event.image.$invalid && !adminDetailCtrl.event.image.$pristine }"
+                           required>
+                    <label for="image">Job interest</label>
+                </div>
+            </div>
+        </form>
+        <!-- Modal Trigger -->
+        <button data-target="modal1" class="btn modal-trigger">Modal</button>
+
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <h4>Modal Header</h4>
+                <p>A bunch of text</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+            </div>
+        </div>
+    </div>
+</div>
