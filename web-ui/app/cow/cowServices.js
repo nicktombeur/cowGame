@@ -53,8 +53,9 @@ define(['app.service'], function (services) {
                 return $('#' + elementId).is(":visible");
             },
             reset: function(){
-                $(".active").removeClass("active");
+                $(".active").remove();
                 $(".drag-target").remove();
+                $(".lean-overlay").remove();
             }
         };
     });

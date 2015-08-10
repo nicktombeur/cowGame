@@ -17,8 +17,6 @@ require.config({
         'angularMocks': '../lib/angular-mocks/angular-mocks',
         'angularRoute': '../lib/angular-route/angular-route.min',
         jquery: '../lib/jquery/dist/jquery.min',
-        materialize: '../lib/materialize/bin/materialize',
-        hammerjs: '../lib/materialize/js/hammer.min',
         cowGame:'../assets/threejs/cowGame'
     },
     shim: {
@@ -27,10 +25,6 @@ require.config({
         },
         'angular': {
             'exports': 'angular'
-        },
-        'materialize': {
-            'export': 'materialize',
-            deps:['jquery','hammerjs']
         },
         'angularRoute': {
             deps: ['angular']

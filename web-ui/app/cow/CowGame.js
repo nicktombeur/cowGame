@@ -1,4 +1,4 @@
-CowGame = function (cowService,gridSize) {
+erCowGame = function (cowService,gridSize) {
 // MAIN
 
 // standard global variables
@@ -253,6 +253,7 @@ CowGame.prototype.update = function() {
             this.camera.rotateX(rotateAngle);
         if (this.keyboard.pressed("G"))
             this.camera.rotateX(-rotateAngle);
+
         // limit this.camera to +/- 45 degrees (0.7071 radians) or +/- 60 degrees (1.04 radians) or 85 (1.48)
         this.camera.rotation.x = THREE.Math.clamp(this.camera.rotation.x, -1.48, 1.48);
         // pressing both buttons moves look angle to original position
