@@ -1,7 +1,36 @@
 <div class="container">
     <div class="section">
-        <h1 class="header center">Create event</h1>
+        <h1 class="header center">{{adminDetailCtrl.title}}</h1>
+        <div class="row">
+            <div class="col s4 m4 l4">
+                <br/>
+            </div>
+            <div class="col s4 m4 l4">
+                <div class="card small cgi-card cgi-cherry-red text-cgi-cherry-red">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator" ng-src="{{adminDetailCtrl.event.image}}">
+                    </div>
+                    <div class="card-content white-text">
+                        <span class="card-title activator text-cgi-cherry-red">{{adminDetailCtrl.event.name}}</span>
 
+                        <p>{{adminDetailCtrl.event.shortDescription}}</p>
+                    </div>
+                    <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">{{adminDetailCtrl.event.name}} <i
+                                    class="mdi-navigation-close right"></i></span>
+
+                        <p>{{adminDetailCtrl.event.longDescription}}</p>
+                    </div>
+                    <div class="card-action text-cgi-honey">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col s4 m4 l4">
+                <br/>
+            </div>
+        </div>
+        <div class="divider"></div>
         <form name="event">
             <div class="row">
                 <div class="input-field col s6">
@@ -15,7 +44,7 @@
                            ng-maxlength=20
                            required>
 
-                    <label for="name">Name</label>
+                    <label class="active" for="name">Name</label>
 
                     <p ng-show="adminDetailCtrl.event.name.$error.minlength && !adminDetailCtrl.event.name.$pristine"
                        class="help-block">name is too short.</p>
@@ -31,7 +60,7 @@
                            type="number"
                            ng-class="{ 'valid': adminDetailCtrl.event.size.$valid, 'invalid': adminDetailCtrl.event.size.$invalid && !adminDetailCtrl.event.size.$pristine }"
                            required>
-                    <label for="size">size</label>
+                    <label class="active" for="size">size</label>
                 </div>
 
             </div>
@@ -46,7 +75,7 @@
                            ng-minlength=3
                            ng-maxlength=20
                            required>
-                    <label for="shortDescription">Description</label>
+                    <label class="active" for="shortDescription">Description</label>
 
                     <p ng-show="adminDetailCtrl.event.shortDescription.$error.minlength && !adminDetailCtrl.event.shortDescription.$pristine"
                        class="help-block">description is too short.</p>
@@ -59,12 +88,12 @@
                 <div class="input-field col s12">
                     <i class="mdi-communication-phone prefix"></i>
                     <textarea name="longDescription"
-                           ng-model="adminDetailCtrl.event.longDescription"
-                           id="longDescription"
-                           class="materialize-textarea"
-                           ng-class="{ 'valid': adminDetailCtrl.event.longDescription.$valid, 'invalid': adminDetailCtrl.event.longDescription.$invalid && !adminDetailCtrl.event.longDescription.$pristine }"
-                           required></textarea>
-                    <label for="longDescription">Full description</label>
+                              ng-model="adminDetailCtrl.event.longDescription"
+                              id="longDescription"
+                              class="materialize-textarea"
+                              ng-class="{ 'valid': adminDetailCtrl.event.longDescription.$valid, 'invalid': adminDetailCtrl.event.longDescription.$invalid && !adminDetailCtrl.event.longDescription.$pristine }"
+                              required></textarea>
+                    <label class="active" for="longDescription">Full description</label>
                 </div>
             </div>
             <div class="row">
@@ -75,22 +104,34 @@
                            ng-model="adminDetailCtrl.event.image"
                            ng-class="{ 'valid': adminDetailCtrl.event.image.$valid, 'invalid': adminDetailCtrl.event.image.$invalid && !adminDetailCtrl.event.image.$pristine }"
                            required>
-                    <label for="image">Job interest</label>
+                    <label class="active" for="image">Image URL</label>
                 </div>
             </div>
         </form>
-        <!-- Modal Trigger -->
-        <button data-target="modal1" class="btn modal-trigger">Modal</button>
+        <h2 class="header center">New Members</h2>
+        <div class="row">
+            <input type="text" ng-model="adminDetailCtrl.searchMember" >
+        </div>
+        <div class="row">
+            <table class="hoverable">
+                <thead>
+                <tr>
+                    <th data-field="id">Name</th>
+                    <th data-field="name">Email</th>
+                    <th data-field="telephone">Telephone</th>
+                    <th data-field="interest">jobInterest</th>
+                </tr>
+                </thead>
 
-        <!-- Modal Structure -->
-        <div id="modal1" class="modal">
-            <div class="modal-content">
-                <h4>Modal Header</h4>
-                <p>A bunch of text</p>
-            </div>
-            <div class="modal-footer">
-                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-            </div>
+                <tbody>
+                <tr ng-repeat="member in adminDetailCtrl.event.newMembers | filter: {name: adminDetailCtrl.searchMember}">
+                    <td>{{member.name}}</td>
+                    <td>{{member.email}}</td>
+                    <td>{{member.telephone}}</td>
+                    <td>{{member.jobInterest}}</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

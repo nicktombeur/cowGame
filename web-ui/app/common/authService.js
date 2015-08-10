@@ -16,7 +16,7 @@ define(['app.module'], function (app) {
 
         factory.login = function (email, password) {
             changeAuth(true);
-            $window.sessionStorage.token = JSON.stringify("eefef");
+            $window.sessionStorage.token = JSON.stringify("eefefkhbbkbkjbkbklbkjbkjbkjbkbkjbkbkjb");
             return true;
         };
 
