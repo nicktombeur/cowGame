@@ -109,29 +109,7 @@
             </div>
         </form>
         <h2 class="header center">New Members</h2>
-        <div class="row">
-            <input type="text" ng-model="adminDetailCtrl.searchMember" >
-        </div>
-        <div class="row">
-            <table class="hoverable">
-                <thead>
-                <tr>
-                    <th data-field="id">Name</th>
-                    <th data-field="name">Email</th>
-                    <th data-field="telephone">Telephone</th>
-                    <th data-field="interest">jobInterest</th>
-                </tr>
-                </thead>
-
-                <tbody>
-                <tr ng-repeat="member in adminDetailCtrl.event.newMembers | filter: {name: adminDetailCtrl.searchMember}">
-                    <td>{{member.name}}</td>
-                    <td>{{member.email}}</td>
-                    <td>{{member.telephone}}</td>
-                    <td>{{member.jobInterest}}</td>
-                </tr>
-                </tbody>
-            </table>
+        <div ui-grid="adminDetailCtrl.gridOptions" ui-grid-selection ui-grid-exporter class="grid"></div>
         </div>
     </div>
 </div>

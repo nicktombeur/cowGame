@@ -8,6 +8,9 @@ require.config({
     paths: {
         angular: '../lib/angular/angular',
         angularRoute: '../lib/angular-route/angular-route',
+        "ui-grid": '../lib/angular-ui-grid/ui-grid.min',
+        "pdfMakeLib": '../lib/pdfmake/build/pdfmake.min',
+        "pdfmake": '../lib/pdfmake/build/vfs_fonts',
         jquery: '../lib/jquery/dist/jquery.min',
         materialize: '../lib/materialize/bin/materialize',
         hammerjs: '../lib/materialize/js/hammer.min',
@@ -30,7 +33,16 @@ require.config({
             'exports': 'angular'
         },
         'angularRoute': {
-            deps:['angular']
+            deps:['angular',"ui-grid"]
+        },
+        pdfMakeLib :
+        {
+            exports: 'pdfMake'
+        },
+        pdfmake :
+        {
+            deps: ['pdfMakeLib'],
+            exports: 'pdfMake'
         },
         'materialize': {
             'export': 'materialize',
