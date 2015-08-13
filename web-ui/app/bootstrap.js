@@ -35,6 +35,9 @@ require.config({
         'angularRoute': {
             deps:['angular',"ui-grid"]
         },
+        "ui-grid":{
+           deps:["angular"]
+        },
         pdfMakeLib :
         {
             exports: 'pdfMake'
