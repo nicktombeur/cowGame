@@ -1,4 +1,4 @@
-define(['angular', 'app.ctrl', 'jquery','pdfmake'], function (angular, ctrls, $,pdfmake) {
+define(['angular', 'app.ctrl', 'jquery','pdfMake'], function (angular, ctrls, $,pdfMake) {
 
     var injectParams = ['$scope', '$routeParams','adminDetailService'];
 
@@ -16,16 +16,14 @@ define(['angular', 'app.ctrl', 'jquery','pdfmake'], function (angular, ctrls, $,
 
        vm.gridOptions = {
            columnDefs: [
-               { field: 'name' },
-               { field: 'email' },
-               { field: 'telephone' },
-               { field: 'jobInterest'}
+               { field: 'name' ,width: '200' },
+               { field: 'email',width: '200'  },
+               { field: 'telephone' ,width: '150' },
+               { field: 'jobInterest',width: '600' }
            ],
            enableGridMenu: true,
            enableSelectAll: true,
            exporterCsvFilename: 'myFile.csv',
-           exporterPdfDefaultStyle: {fontSize: 7},
-           exporterPdfTableStyle: {margin: [3, 3, 3, 3]},
            exporterPdfTableHeaderStyle: {fontSize: 10, bold: true, italics: true, color: 'red'},
            exporterPdfHeader: { text: "New members", style: 'headerStyle' },
            exporterPdfFooter: function ( currentPage, pageCount ) {
@@ -37,8 +35,7 @@ define(['angular', 'app.ctrl', 'jquery','pdfmake'], function (angular, ctrls, $,
                return docDefinition;
            },
            exporterPdfOrientation: 'landscape',
-           exporterPdfPageSize: 'A4',
-           exporterPdfMaxGridWidth: 600,
+           exporterPdfPageSize: 'LETTER',
            exporterCsvLinkElement: angular.element(document.querySelectorAll(".custom-csv-link-location")),
            onRegisterApi: function(gridApi){
                vm.gridApi = gridApi;

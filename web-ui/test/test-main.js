@@ -17,7 +17,10 @@ require.config({
         'angularMocks': '../lib/angular-mocks/angular-mocks',
         'angularRoute': '../lib/angular-route/angular-route.min',
         jquery: '../lib/jquery/dist/jquery.min',
-        cowGame:'../assets/threejs/cowGame'
+        cowGame:'../assets/threejs/cowGame',
+        "ui-grid": '../lib/angular-ui-grid/ui-grid.min',
+        "pdfMakeLib": '../lib/pdfmake/build/pdfmake.min',
+        "pdfMake": '../lib/pdfmake/build/vfs_fonts'
     },
     shim: {
         'jquery': {
@@ -27,11 +30,20 @@ require.config({
             'exports': 'angular'
         },
         'angularRoute': {
-            deps: ['angular']
+            deps: ['angular','ui-grid']
         },
         'angularMocks': {
             deps: ['angular']
 
+        },
+        pdfMakeLib :
+        {
+            exports: 'pdfMake'
+        },
+        pdfMake :
+        {
+            deps: ['pdfMakeLib'],
+            exports: 'pdfMake'
         }
     },
 

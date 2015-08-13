@@ -31,6 +31,24 @@ define(['app.service'], function (services) {
                             telephone: "90809720972",
                             jobInterest: "ezfezkflnezlfknezlkafnelkznaflezkanflkezanflekzanffezaklnflkeznfklzenfklezf"
 
+                        },{
+                            name: "Maarten Denorme",
+                            email: "ezfzefze@ezf.com",
+                            telephone: "90809720972",
+                            jobInterest: "ezfezkflnezlfknezlkafnelkznaflezkanflkezanflekzanffezaklnflkeznfklzenfklezf"
+
+                        },{
+                            name: "Mart Denorme",
+                            email: "ezfzefze@ezf.com",
+                            telephone: "90809720972",
+                            jobInterest: "ezfezkflnezlfknezlkafnelkznaflezkanflkezanflekzanffezaklnflkeznfklzenfklezf"
+
+                        },{
+                            name: "Nick Tombeur",
+                            email: "ezfzefze@ezf.com",
+                            telephone: "90809720972",
+                            jobInterest: "ezfezkflnezlfknezlkafnelkznaflezkanflkezanflekzanffezaklnflkeznfklzenfklezf"
+
                         }
                     ]
                 };
