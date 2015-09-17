@@ -28,6 +28,7 @@ object CowgameBuild extends Build {
         "org.scalatra" %% "scalatra-swagger"  % ScalatraVersion,
         "org.scalatra" %% "scalatra-json" % ScalatraVersion,
         "org.scalatra" %% "scalatra-auth" % ScalatraVersion,
+        "org.scalatra" %% "scalatra-commands" % ScalatraVersion,
         "org.json4s"   %% "json4s-jackson" % "3.2.9",
         "org.json4s"   %% "json4s-native" % "3.2.9",
         "org.json4s"   %% "json4s-mongo" % "3.2.10",
