@@ -7,5 +7,5 @@ define([
     'angular',
     'angularRoute'
 ], function(angular) {
-    return angular.module('cowGame', ['ngRoute','routeResolver','ui.grid', 'ui.grid.selection', 'ui.grid.exporter', 'ui.grid.moveColumns','cowGame.ctrl','cowGame.service','cowGame.directive']);
+    return angular.module('cowGame', ['ngRoute','ngResource','routeResolver','ui.grid', 'ui.grid.selection', 'ui.grid.exporter', 'ui.grid.moveColumns','cowGame.ctrl','cowGame.service','cowGame.directive']);
 });

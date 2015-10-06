@@ -1,4 +1,4 @@
-define(['angular', 'angularRoute', 'routeResolver', 'app.route','common/authService', 'common/navbarController', 'index/indexCtrl', 'angularMocks'], function () {
+define(['angular','angularResource','ui-grid', 'angularRoute', 'routeResolver', 'app.route','common/authService', 'common/navbarController', 'index/indexCtrl', 'angularMocks'], function () {
     describe('Cowgame index test suite', function () {
         beforeEach(module('cowGame'));
 

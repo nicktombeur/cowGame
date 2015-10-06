@@ -206,6 +206,7 @@ CowGame.prototype.generateGrid = function() {
             cube.coord = {x: x + 1, y: z + 1};
             if (this.cowService.getSelectedCubes(cube)) {
                 cube.material = this.materials["solid"][0];
+                cube.selected = true;
             } else {
                 cube.material = this.materials["solid"][1];
             }
@@ -253,7 +254,7 @@ CowGame.prototype.update = function() {
         if (this.keyboard.pressed("G"))
             this.camera.rotateX(-rotateAngle);
 
-        this.keyboard.debug();
+        //this.keyboard.debug();
 
         // limit this.camera to +/- 45 degrees (0.7071 radians) or +/- 60 degrees (1.04 radians) or 85 (1.48)
         this.camera.rotation.x = THREE.Math.clamp(this.camera.rotation.x, -1.48, 1.48);
@@ -266,10 +267,8 @@ CowGame.prototype.update = function() {
 
         // set view to Origin
         if (this.keyboard.down("O"))
-            this.viewSet(1);
-        // set view to bird's-eye-view (Pigeon's-eye-view?)
-        if (this.keyboard.down("P"))
             this.viewSet(2);
+
 
 
         this.tempCube.material = this.materials["select"][this.tempCube.colorIndex];

@@ -5,6 +5,9 @@
             <input type="text" ng-model="adminCtrl.searchGames" >
         </div>
         <div class="row">
+            {{adminCtrl.error}}
+        </div>
+        <div class="row">
             <div ng-repeat="game in adminCtrl.games | filter: {title: adminCtrl.searchGames}" class="col s12 m12 l4">
                 <div class="card small cgi-card cgi-cherry-red text-cgi-cherry-red">
                     <div class="card-image waves-effect waves-block waves-light">

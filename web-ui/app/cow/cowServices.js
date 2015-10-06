@@ -1,7 +1,7 @@
 define(['app.service'], function (services) {
     services.factory('cowService',["$http", function ($http) {
 
-        var field = [];
+        var field = [{name: "X4Y0Z4"}];
 
 
         return {

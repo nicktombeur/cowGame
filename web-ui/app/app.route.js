@@ -36,7 +36,7 @@ define(['app.module'], function (app) {
                 }))
                 .when('/admin', route.resolve({
                     name: 'admin',
-                    services: ['adminServices'],
+                    services: ['adminEventService'],
                     access: {
                         requiresLogin: true,
                         requiredPermissions: ['Admin'],
@@ -46,12 +46,12 @@ define(['app.module'], function (app) {
                 }))
                 .when('/admin/edit/:id', route.resolve({
                     name: 'adminDetail',
-                    services: ['adminDetailServices'],
+                    services: ['/admin/overview/adminEventService'],
                     path: 'admin/detail'
                 }))
                 .when('/admin/edit/', route.resolve({
                     name: 'adminDetail',
-                    services: ['adminDetailServices'],
+                    services: ['/admin/overview/adminEventService'],
                     path: 'admin/detail'
                 }))
                 .when('/login/:redirect*?', route.resolve({

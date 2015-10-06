@@ -8,6 +8,7 @@ require.config({
     paths: {
         angular: '../lib/angular/angular',
         angularRoute: '../lib/angular-route/angular-route',
+        angularResource: '../lib/angular-resource/angular-resource.min',
         "ui-grid": '../lib/angular-ui-grid/ui-grid.min',
         "pdfMakeLib": '../lib/pdfmake/build/pdfmake.min',
         "pdfMake": '../lib/pdfmake/build/vfs_fonts',
@@ -34,6 +35,9 @@ require.config({
         },
         'angularRoute': {
             deps:['angular',"ui-grid"]
+        },
+        "angularResource":{
+            deps:["angularRoute"]
         },
         "ui-grid":{
            deps:["angular"]
@@ -69,6 +73,7 @@ require.config({
 require([
         'angular',
         'jquery',
+        'angularResource',
         'materialize',
 
         'routeResolver',
